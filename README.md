@@ -1,6 +1,5 @@
 Laravel4-Zuora-library
 ===========================
-This is be broken
 
 ## Installation
 
