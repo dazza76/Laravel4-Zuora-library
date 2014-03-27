@@ -1,0 +1,29 @@
+{
+    "name": "dazza76/zuora",
+    "type": "library",
+    "description": "A Laravel 4 package for the PHPForce Zuora library",
+    "keywords": [ "zuora", "zuora.com", "soap", "laravel", "laravel4" ],
+    "authors": [
+        {
+            "name": "Darren Philips",
+            "email": "darren_philips@hotmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.1.*",
+        "phpforce/soap-client": "*"
+    },
+    "suggest": {
+        "guzzle/http": "For fetching the latest WSDL from Zuora"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Dazza76\\Zuora\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
