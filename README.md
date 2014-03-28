@@ -23,14 +23,11 @@ add the service provider to `app/config/app.php`, within the `providers` array.
 )
 ```
 
-Finally create the config files and publish the public folder
-php artisan config:publish dazza76/zuora
-php artisan asset:publish dazza76/zuora
-
-
 ## Configuration
 
-Run `php artisan config:publish dazza76/zuora` to publish the package config file. Add your username, password, security token(optional) and the absolute path to your enterprise/partner WSDL file which can be obtained from your Zuora Org.
+Run `php artisan config:publish dazza76/zuora` to publish the package config file.
+Run `php artisan asset:publish dazza76/zuora` to publish the public wsql file.
+Add your username, password and path to your file which can be obtained from your Zuora and select an endpoint to connect to 
 
 ```php
 Config::set('zuora::connections.runtime', array(
