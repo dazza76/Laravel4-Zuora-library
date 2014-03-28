@@ -33,11 +33,12 @@ php artisan asset:publish dazza76/zuora
 Run `php artisan config:publish dazza76/zuora` to publish the package config file. Add your username, password, security token(optional) and the absolute path to your enterprise/partner WSDL file which can be obtained from your Zuora Org.
 
 ```php
-Config::set('zuora::connections.key', array(
-           'host'   => '',
-           'username' => '',
-           'password'   => '',
-           'passive'   => false,
+Config::set('zuora::connections.runtime', array(
+			'wsdl' => 'zuora.a.54.0.wsdl',
+                        'username' => '',
+                        'password' => '',
+                        //'endpoint' => 'https://www.zuora.com/apps/services/a/54.0'
+                         'endpoint' => 'https://apisandbox.zuora.com/apps/services/a/54.0'
 ));
 ```
 
@@ -51,13 +52,9 @@ Zuora::connection()->queryall(...);
 
 When using multiple connections you can access each specific Zuora connection by passing connection name:
 ```php
-Zuora::connection('foo')->queryall(...);
+Zuora::connection('runtime')->queryall(...);
 ```
 
-If you need to disconnect from a given Zuora use the disconnect method:
-```php
-Zuora::disconnect('foo');
-```
 
 Basic usage examples
 ------------
