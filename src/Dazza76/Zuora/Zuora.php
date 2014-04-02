@@ -22,12 +22,12 @@ class Zuora {
 	protected $defer = false;
 
   /**
-     * The active FTP connection resource id.
+     * The active zuora connection resource id.
      */
     protected $connectionId;
 
     /**
-     * Create a new ftp connection instance.
+     * Create a new Zuora connection instance.
      *
      * @param  config
      * @return void
@@ -39,7 +39,7 @@ class Zuora {
 
 
     /**
-     * Establish ftp connection
+     * Establish zuora connection
      * 
      * @param $config
      * @return resource
@@ -67,7 +67,7 @@ class Zuora {
      */
     public function disconnect()
     {
-//        ftp_close($this->connectionId);
+//        zuora_close($this->connectionId);
     }
 
 	/**
@@ -130,6 +130,25 @@ class Zuora {
 
 	}
 
+
+	function uploadUsages($usages){
+	$instance = $this->connectionId;
+        $zUsages = array();
+        foreach($usages as $usage){
+                $zUsage = new \Zuora_Usage();
+                $zUsage->AccountId = $usage['AccountId'];
+                $zUsage->SubscriptionId = $usage['SubscriptionId'];
+                $zUsage->Quantity  = $usage['Quantity'];
+                $zUsage->StartDateTime = date("Y-m-d\Th:i:s",\strtotime($usage['StartDateTime']));
+                $zUsage->EndDateTime = date("Y-m-d\Th:i:s",\strtotime($usage['EndDateTime']));
+                $zUsage->UOM = $usage['UOM'];
+                $zUsage->ChargeId = $usage['ChargeId'];
+                $zUsage->Description =  $usage['Description'];
+                $zUsages[] = $zUsage;
+        }
+	$result = $instance->create($zUsages);
+        return $result;
+}
 
 	/**
 	 *
