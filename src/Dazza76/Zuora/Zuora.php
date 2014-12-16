@@ -139,8 +139,9 @@ class Zuora {
                 $zUsage->AccountId = $usage['AccountId'];
                 $zUsage->SubscriptionId = $usage['SubscriptionId'];
                 $zUsage->Quantity  = $usage['Quantity'];
-                $zUsage->StartDateTime = date("Y-m-d\Th:i:s",\strtotime($usage['StartDateTime']));
-                $zUsage->EndDateTime = date("Y-m-d\Th:i:s",\strtotime($usage['EndDateTime']));
+                $zUsage->StartDateTime = date("Y-m-d\TH:i:s",\strtotime($usage['StartDateTime']));
+                $zUsage->EndDateTime = date("Y-m-d\TH:i:s",\strtotime($usage['EndDateTime']));
+
                 $zUsage->UOM = $usage['UOM'];
                 $zUsage->ChargeId = $usage['ChargeId'];
                 $zUsage->Description =  $usage['Description'];
